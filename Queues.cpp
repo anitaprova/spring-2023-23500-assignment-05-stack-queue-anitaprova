@@ -4,7 +4,7 @@
 Queue::Queue()
 {
 	head = nullptr;
-	tail = nullptr;
+	capacity = 0;
 }
 
 Queue::~Queue()
@@ -15,13 +15,21 @@ Queue::~Queue()
 
 void Queue::enqueue(std::string i)
 {
+	if (capacity == 1)
+	{
+		tail = head;
+	}
+
 	Node *tmp = new Node(i);
 	tmp->setNext(head);
-	tail = tmp;
+	head = tmp;
+	capacity++;
 }
 
 std::string Queue::dequeue()
 {
+	tail = tail->getNext();
+	return tail->getData();
 }
 
 std::string Queue::front()
@@ -31,8 +39,25 @@ std::string Queue::front()
 
 bool Queue::is_empty()
 {
+	return false;
 }
 
 bool Queue::is_full()
 {
+	return false;
+}
+
+std::string Queue::toString()
+{
+	Node *tmp = this->head;
+	std::string result = "";
+	result = result + "head-->";
+	while (tmp != nullptr)
+	{
+		result = result + tmp->getData();
+		result = result + "-->";
+		tmp = tmp->getNext();
+	}
+	result = result + "nullptr";
+	return result;
 }
