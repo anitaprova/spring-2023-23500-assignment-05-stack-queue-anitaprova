@@ -13,17 +13,21 @@ void Queue::enqueue(std::string i) // first in first out
 {
 	if (head >= size)
 	{
-		head = 0;
+		head = tail;
 		full = true;
 	}
-
 	a[head] = i;
 	head++;
+
+	if (head == size)
+	{
+		full = true;
+	}
 }
 
 std::string Queue::dequeue()
-{	
-	if(tail > head)
+{
+	if (tail >= head)
 	{
 		tail = 0;
 		empty = true;

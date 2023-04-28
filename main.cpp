@@ -42,20 +42,22 @@ int main()
 	// Part 2
 	std::cout << "\n\n\nPART 2\n";
 	Queue *q = new Queue;
+	std::cout << "empty: " << q->is_empty() << "\n";
 	q->enqueue("1");
 	q->enqueue("2");
 	q->enqueue("3");
 	q->enqueue("4");
 	q->enqueue("5");
 	//q->enqueue("6");
-	std::cout << q->toString() << "\n";
 	std::cout << "front: " << q->front() << "\n";
+	std::cout << "full: " << q->is_full() << "\n"; //1
+	std::cout << q->toString() << "\n";
 
 	std::cout << q->dequeue() << "\n";
 	std::cout << q->dequeue() << "\n";
 	std::cout << q->dequeue() << "\n";
 	std::cout << q->dequeue() << "\n";
-	//std::cout << q->dequeue() << "\n";
+	std::cout << q->dequeue() << "\n";
 	std::cout << "front: " << q->front() << "\n";
 
 	return 0;
