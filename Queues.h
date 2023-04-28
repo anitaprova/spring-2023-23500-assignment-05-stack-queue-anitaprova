@@ -1,18 +1,18 @@
 #pragma once
 #include <string>
-#include "Node.h"
 
 class Queue
 {
 private:
-	Node *head;
-	Node *tail;
-	int a[5];
-	int capacity;
+	int head;
+	int tail;
+	bool empty;
+	bool full;
+	int size = 5;
+	std::string a[5];
 
 public:
 	Queue();
-	~Queue();
 	void enqueue(std::string i);
 	std::string dequeue();
 	std::string front();

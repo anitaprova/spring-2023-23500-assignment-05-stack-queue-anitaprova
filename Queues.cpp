@@ -3,61 +3,59 @@
 
 Queue::Queue()
 {
-	head = nullptr;
-	capacity = 0;
+	head = 0;
+	tail = 0;
+	empty = false;
+	full = false;
 }
 
-Queue::~Queue()
+void Queue::enqueue(std::string i) // first in first out
 {
-	delete head;
-	delete tail;
-}
-
-void Queue::enqueue(std::string i)
-{
-	if (capacity == 1)
+	if (head >= size)
 	{
-		tail = head;
+		head = 0;
+		full = true;
 	}
 
-	Node *tmp = new Node(i);
-	tmp->setNext(head);
-	head = tmp;
-	capacity++;
+	a[head] = i;
+	head++;
 }
 
 std::string Queue::dequeue()
-{
-	tail = tail->getNext();
-	return tail->getData();
+{	
+	if(tail > head)
+	{
+		tail = 0;
+		empty = true;
+		return a[tail];
+	}
+
+	tail++;
+	return a[tail];
 }
 
 std::string Queue::front()
 {
-	return tail->getData();
+	return a[tail];
 }
 
 bool Queue::is_empty()
 {
-	return false;
+	return empty;
 }
 
 bool Queue::is_full()
 {
-	return false;
+	return full;
 }
 
 std::string Queue::toString()
 {
-	Node *tmp = this->head;
 	std::string result = "";
-	result = result + "head-->";
-	while (tmp != nullptr)
+	for (int i = tail; i < size; i++)
 	{
-		result = result + tmp->getData();
-		result = result + "-->";
-		tmp = tmp->getNext();
+		result = result + a[i] + " ";
 	}
-	result = result + "nullptr";
+
 	return result;
 }
