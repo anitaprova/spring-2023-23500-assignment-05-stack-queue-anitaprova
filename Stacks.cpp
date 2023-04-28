@@ -30,17 +30,21 @@ std::string StackList::pop()
 
 std::string StackList::top() // return top item
 {
-  Node *tmp = this->head; // goes to last added item
-  while (tmp->getNext() != nullptr)
+  if (head == nullptr)
   {
-    tmp = tmp->getNext();
+    throw STACK_ERR_EMPTY;
   }
-  return tmp->getData();
+  return head->getData();
 }
 
 bool StackList::is_empty()
 {
   return head == nullptr;
+}
+
+Node *StackList::gethead()
+{
+  return head;
 }
 
 std::string StackList::toString() // helper function for testing

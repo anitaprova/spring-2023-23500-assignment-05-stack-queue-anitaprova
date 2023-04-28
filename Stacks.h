@@ -17,5 +17,6 @@ public:
   std::string pop();
   std::string top();
   bool is_empty();
+  Node *gethead();
   std::string toString();
 };
