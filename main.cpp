@@ -48,9 +48,10 @@ int main()
 	q->enqueue("3");
 	q->enqueue("4");
 	q->enqueue("5");
-	//q->enqueue("6");
+	q->enqueue("EXTRA");
 	std::cout << "front: " << q->front() << "\n";
-	std::cout << "full: " << q->is_full() << "\n"; //1
+	std::cout << "empty: " << q->is_empty() << "\n";
+	std::cout << "full: " << q->is_full() << "\n";
 	std::cout << q->toString() << "\n";
 
 	std::cout << q->dequeue() << "\n";
@@ -58,7 +59,9 @@ int main()
 	std::cout << q->dequeue() << "\n";
 	std::cout << q->dequeue() << "\n";
 	std::cout << q->dequeue() << "\n";
-	std::cout << "front: " << q->front() << "\n";
+	std::cout << q->toString() << "\n";
+	std::cout << "front: " << q->front() << "\n"; //should be empty because list is empty
+	std::cout << "empty: " << q->is_empty() << "\n";
 
 	return 0;
 }

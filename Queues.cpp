@@ -5,36 +5,47 @@ Queue::Queue()
 {
 	head = 0;
 	tail = 0;
-	empty = false;
-	full = false;
 }
 
 void Queue::enqueue(std::string i) // first in first out
 {
-	if (head >= size)
+	if (this->is_full()) // doesnt add more when full
 	{
-		head = tail;
-		full = true;
+		head = 0;
 	}
-	a[head] = i;
-	head++;
-
-	if (head == size)
+	else
 	{
-		full = true;
+		a[head] = i;
+		head++;
+	}
+
+	if (head >= size) // checks to see if full
+	{
+		head = 0;
 	}
 }
 
 std::string Queue::dequeue()
 {
-	if (tail >= head)
+	if (this->is_full())
 	{
-		tail = 0;
-		empty = true;
-		return a[tail];
+		head = size;
 	}
 
-	tail++;
+	if (tail < head) // if tail == head make tail = 0
+	{
+		for (int i = tail; i < head - 1; i++)
+		{
+			a[i] = a[i + 1]; // rewrites it
+		}
+		a[head - 1] = "";
+		head = head - 1;
+	}
+	else
+	{
+		a[tail] = "";
+	}
+
 	return a[tail];
 }
 
@@ -45,17 +56,25 @@ std::string Queue::front()
 
 bool Queue::is_empty()
 {
-	return empty;
+	if (tail == head && a[tail] == "")
+	{
+		return true;
+	}
+	return false;
 }
 
 bool Queue::is_full()
 {
-	return full;
+	if (head == tail && a[head] != "")
+	{
+		return true;
+	}
+	return false;
 }
 
 std::string Queue::toString()
 {
-	std::string result = "";
+	std::string result = "Printing: ";
 	for (int i = tail; i < size; i++)
 	{
 		result = result + a[i] + " ";

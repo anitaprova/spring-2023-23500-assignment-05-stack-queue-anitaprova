@@ -6,8 +6,6 @@ class Queue
 private:
 	int head;
 	int tail;
-	bool empty;
-	bool full;
 	int size = 5;
 	std::string a[5];
 
