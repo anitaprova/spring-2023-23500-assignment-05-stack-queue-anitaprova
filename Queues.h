@@ -11,6 +11,8 @@ private:
 
 public:
 	Queue();
+	int getHead();
+	int getTail();
 	void enqueue(std::string i);
 	std::string dequeue();
 	std::string front();

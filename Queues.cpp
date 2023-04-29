@@ -7,6 +7,16 @@ Queue::Queue()
 	tail = 0;
 }
 
+int Queue::getHead() //for testing
+{
+	return head;
+}
+
+int Queue::getTail() //for testing 
+{
+	return tail;
+}
+
 void Queue::enqueue(std::string i) // first in first out
 {
 	if (this->is_full()) // doesnt add more when full
@@ -74,8 +84,8 @@ bool Queue::is_full()
 
 std::string Queue::toString()
 {
-	std::string result = "Printing: ";
-	for (int i = tail; i < size; i++)
+	std::string result = "";
+	for (int i = tail; i < head; i++)
 	{
 		result = result + a[i] + " ";
 	}
