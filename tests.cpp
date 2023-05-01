@@ -48,6 +48,7 @@ TEST_CASE("pop and dequeue")
 	s->push("B");
 	s->push("C");
 	CHECK(s->pop() == "B");
+	CHECK(s->top() == "B");
 	CHECK(s->toString() == "head-->B-->A-->nullptr");
 	CHECK(s->pop() == "A");
 	CHECK(s->toString() == "head-->A-->nullptr");
@@ -83,6 +84,8 @@ TEST_CASE("top and front"){
 TEST_CASE("is_empty and is_full"){
 	StackList *s = new StackList();
 	CHECK(s->is_empty() == 1);
+	s->push("0");
+	CHECK(s->is_empty() == 0);
 
 	Queue *q = new Queue();
 	CHECK(q->is_empty() == true);

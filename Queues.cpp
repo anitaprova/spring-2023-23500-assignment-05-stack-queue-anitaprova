@@ -82,7 +82,7 @@ bool Queue::is_full()
 	return false;
 }
 
-std::string Queue::toString()
+std::string Queue::toString() //helper function
 {
 	std::string result = "";
 	for (int i = tail; i < head; i++)

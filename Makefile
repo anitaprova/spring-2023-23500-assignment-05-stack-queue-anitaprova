@@ -1,7 +1,10 @@
 OBJECTS = Stacks.o Node.o Queues.o
+CXXFLAGS = -g
+LDFLAGS =
+CXX=g++
 
 main: main.o $(OBJECTS)
-	g++ -g -o main main.o $(OBJECTS)
+	$(CXX) -g -o main main.o $(OBJECTS)
 
 tests: tests.o $(OBJECTS)
 	g++ -g -o tests tests.o $(OBJECTS)

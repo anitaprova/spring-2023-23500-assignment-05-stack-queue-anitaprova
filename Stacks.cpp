@@ -20,17 +20,20 @@ void StackList::push(std::string s)
 
 std::string StackList::pop()
 {
-  if (head == nullptr)
+  Node *walker;
+  walker = head;
+  if (this->is_empty() == true)
   {
     throw STACK_ERR_EMPTY;
   }
+
   head = head->getNext();
   return head->getData();
 }
 
 std::string StackList::top() // return top item
 {
-  if (head == nullptr)
+  if (this->is_empty() == true)
   {
     throw STACK_ERR_EMPTY;
   }
